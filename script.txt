@@ -1,1 +1,18 @@
 cargo new qrcode --bin
+
+
+
+
+rustc -C linker=arm-linux-gnueabi-gcc-7  --target=arm-unknown-linux-gnueabi   main.rs 
+
+Linker 和 target要相互配合
+
+
+这个组合也可以工作
+
+
+rustc -C linker=arm-linux-gnueabihf-gcc-7   --target=armv7-unknown-linux-gnueabihf   main.rs
+
+
+
+
