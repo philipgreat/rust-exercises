@@ -10,4 +10,4 @@ edition = "2018"
 
 
 [target.armv7-unknown-linux-gnueabihf]
-linker = "gcc-arm-linux-gnueabi"
+linker = "arm-linux-gnueabi-gcc-7"
