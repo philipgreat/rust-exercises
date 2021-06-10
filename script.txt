@@ -1,4 +1,14 @@
 
+
+https://crates.io/
+
+
+
+
+
+cargo new  sysstat --bin
+
+
 rustc -C linker=arm-linux-gnueabi-gcc-7  --target=arm-unknown-linux-gnueabi   main.rs 
 
 Linker 和 target要相互配合
@@ -13,13 +23,13 @@ rustc -C linker=arm-linux-gnueabihf-gcc-7   --target=armv7-unknown-linux-gnueabi
 
 
 
-需要增加下面的文件
+需要增加下面的文件, 配置linker，然后变为静态执行方式
 
 
 ubuntu@ora2:~/githome/rust-exercises/todo-cli$ cat ~/.cargo/config 
 [target.armv7-unknown-linux-gnueabihf]
 linker = "arm-linux-gnueabihf-gcc-7"
-
+rustflags = ["-C", "target-feature=+crt-static"]
 
 
 cargo build --target armv7-unknown-linux-gnueabihf
