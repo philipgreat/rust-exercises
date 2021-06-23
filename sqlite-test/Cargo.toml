@@ -1,0 +1,11 @@
+[package]
+name = "sqlite-test"
+version = "0.1.0"
+authors = ["Philip Zhang <zhangxilai@doublechaintech.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# RUSTFLAGS='-C link-arg=-s' cargo build --release
+[dependencies]
+rusqlite = "0.25.3"
+
