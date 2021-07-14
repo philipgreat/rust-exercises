@@ -3,11 +3,11 @@ use fltk::{app, button::Button, frame::Frame, prelude::*, window::Window};
 
 fn main() {
     let app = app::App::default().with_scheme(app::Scheme::Gtk);
-    let mut wind = Window::new(100, 100, 400, 300, "Hello from rust");
-    let mut frame = Frame::new(0, 0, 400, 200, "");
+    let mut wind = Window::new(100, 100, 800, 600, "终端控制程序");
+    let mut frame = Frame::new(0, 0, 400, 200, "123123");
     let mut but = Button::new(160, 210, 80, 40, "点击一下子");
     let mut but2 = Button::new(160, 260, 80, 40, "点击一下子");
-    
+    //let mut but3 = Butt
     wind.end();
     
     wind.show();
