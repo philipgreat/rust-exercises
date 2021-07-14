@@ -1,5 +1,17 @@
 
 
+function deletehistory(){
+
+    target=$1
+    git add .
+    git commit -m"commit for removing extra files"
+    git pull
+    git push
+    git filter-branch --force --index-filter 'git rm -r —cached --ignore-unmatch hello-wasm/target' --prune-empty --tag-name-filter cat -- --all
+    git commit -m"remove  extra class"
+    git push origin --force --all
+
+}
 function test(){
 
     name=$1
@@ -39,17 +51,5 @@ function deletetarget(){
 }
 
 
-function deletehistory(){
 
-    target=$1
-    git add .
-    git commit -m"commit for removing extra files"
-    git pull
-    git push
-    git filter-branch --force --index-filter 'git rm -r —cached --ignore-unmatch ${target}' --prune-empty --tag-name-filter cat -- --all
-    git commit -m"remove  extra class"
-    git push origin --force --all
-
-}
-
-deletetarget 
+deletehistory 
