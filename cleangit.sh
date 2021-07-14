@@ -7,7 +7,7 @@ function deletehistory(){
     git commit -m"commit for removing extra files"
     git pull
     git push
-    git filter-branch --force --index-filter 'git rm -r —cached --ignore-unmatch hello-wasm/target' --prune-empty --tag-name-filter cat -- --all
+    git filter-branch --force --index-filter 'git rm -r —cached --ignore-unmatch todo-cli/meilisearch' --prune-empty --tag-name-filter cat -- --all
     git commit -m"remove  extra class"
     git push origin --force --all
 
@@ -53,4 +53,4 @@ function deletetarget(){
 
 
 
-deletetarget 
+deletehistory 
