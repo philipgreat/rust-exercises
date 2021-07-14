@@ -40,9 +40,9 @@ function deletetarget(){
     git push
     for d in */ ; do
         if [ -d "$d/target" ]; then
-            targetfolder="${d}target/"
+            targetfolder="${d}target"
             echo "${targetfolder}"
-            #git filter-branch --force --index-filter 'git rm -r —cached --ignore-unmatch ${targetfolder}' --prune-empty --tag-name-filter cat -- --all
+            git filter-branch --force --index-filter 'git rm -r —cached --ignore-unmatch ${targetfolder}' --prune-empty --tag-name-filter cat -- --all
         fi
         
     done
