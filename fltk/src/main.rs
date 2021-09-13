@@ -15,6 +15,7 @@ fn main() {
     let mut frame2 = MultilineInput::new(300, 200, 400, 300, "123123");
     frame.set_label_font(Font::by_name(&font));
     frame2.set_text_font(Font::by_name(&font_sim_hei));
+    frame2.set_text_size(100);
     let mut but = Button::new(160, 210, 80, 40, "点击一下子");
     let mut but2 = Button::new(160, 260, 80, 40, "点击一下子");
     
@@ -23,7 +24,7 @@ fn main() {
     but.set_label_font(Font::by_name(&font));
     but2.set_label_font(Font::by_name(&font_sim_hei));
 
-    
+
     wind.show();
     but.set_callback(move |_| frame.set_label("Hello World!"));
     but2.set_callback(move |_| frame2.set_value("ddd你好"));
