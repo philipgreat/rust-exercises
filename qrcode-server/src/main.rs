@@ -114,7 +114,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| 
         App::new().wrap(middleware::Logger::default())
             .service(index).service(genqrcode).service(qrsvc))
-        .bind("127.0.0.1:9090")?
+        .bind("0.0.0.0:9090")?
         .run()
         .await
 }
