@@ -1,6 +1,6 @@
 //use actix_web::{error, middleware, get, web, App, HttpServer, Responder,HttpResponse,HttpRequest};
 use actix_web::{middleware, get, web, App, HttpServer, Responder,HttpResponse,HttpRequest};
-
+use urlencoding::decode;
 use actix_web::http::header::ContentType;
 
 //use qrcode::{QrCode, Version, EcLevel};
@@ -65,14 +65,21 @@ use std::io::Cursor;
 
 
 #[get("/{id}/{name}/index.html")]
-async fn index(web::Path((id, name)): web::Path<(u32, String)>) -> impl Responder {
-    format!("Hello {}! id:{}", name, id)
+async fn index2(web::Path((id, name)): web::Path<(u32, String)>) -> impl Responder {
+    format!("Hello {}! id:{}", name, id);
+}
+
+#[get("/")]
+async fn index() -> impl Responder {
+    format!("v0.11 use /qrsvc/svg/qrcode/ or /qrsvc/png/qrcode/ to use the service");
 }
 
 
 #[get("/qrsvc/{imagetype}/{content}/")]
 async fn qrsvc(web::Path((imagetype, content)): web::Path<(String, String)>)  -> HttpResponse {
 
+
+    let decodedcontent = decode(&content);
     
     if imagetype=="svg" {
         return serve_svg(content);
