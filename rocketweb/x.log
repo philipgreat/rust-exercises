@@ -1,0 +1,33 @@
+Configured for debug.
+   >> address: 127.0.0.1
+   >> port: 8000
+   >> workers: 8
+   >> ident: Rocket
+   >> keep-alive: 5s
+   >> limits: bytes = 8KiB, data-form = 2MiB, file = 1MiB, form = 32KiB, json = 1MiB, msgpack = 1MiB, string = 8KiB
+   >> tls: disabled
+   >> temp dir: /var/folders/dx/p67cxp5s5v33s5kl8gm9z_600000gn/T/
+   >> log level: normal
+   >> cli colors: true
+   >> shutdown: ctrlc = true, force = true, signals = [SIGTERM], grace = 2s, mercy = 3s
+Routes:
+   >> (index) GET /
+Fairings:
+   >> Shield (liftoff, response, singleton)
+Shield:
+   >> X-Content-Type-Options: nosniff
+   >> X-Frame-Options: SAMEORIGIN
+   >> Permissions-Policy: interest-cohort=()
+Rocket has launched from http://127.0.0.1:8000
+GET /dev-server/info?t=1632380388325:
+   >> No matching routes for GET /dev-server/info?t=1632380388325.
+   >> No 404 catcher registered. Using Rocket default.
+   >> Response succeeded.
+GET /hello/what/31 text/html:
+   >> No matching routes for GET /hello/what/31 text/html.
+   >> No 404 catcher registered. Using Rocket default.
+   >> Response succeeded.
+GET / text/html:
+   >> Matched: (index) GET /
+   >> Outcome: Success
+   >> Response succeeded.

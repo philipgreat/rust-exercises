@@ -66,12 +66,12 @@ use std::io::Cursor;
 
 #[get("/{id}/{name}/index.html")]
 async fn index2(web::Path((id, name)): web::Path<(u32, String)>) -> impl Responder {
-    format!("Hello {}! id:{}", name, id);
+    format!("Hello {}! id:{}", name, id)
 }
 
 #[get("/")]
 async fn index() -> impl Responder {
-    format!("v0.11 use /qrsvc/svg/qrcode/ or /qrsvc/png/qrcode/ to use the service");
+    format!("v0.11 use /qrsvc/svg/qrcode/ or /qrsvc/png/qrcode/ to use the service")
 }
 
 
@@ -82,9 +82,9 @@ async fn qrsvc(web::Path((imagetype, content)): web::Path<(String, String)>)  ->
     let decodedcontent = decode(&content);
     
     if imagetype=="svg" {
-        return serve_svg(content);
+        return serve_svg(decodedcontent.unwrap().into_owned());
     }
-    return serve_png(content);
+    return serve_png(decodedcontent.unwrap().into_owned());
 
     //format!("hello")
 }
