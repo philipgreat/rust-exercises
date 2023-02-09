@@ -10,3 +10,8 @@ edition = "2018"
 fltk = { version = "^1", features = ["fltk-bundled"] }
 
 
+[profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1
+strip = "debuginfo"

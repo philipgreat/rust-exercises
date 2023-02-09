@@ -118,7 +118,7 @@ impl Term {
         curr.push_str("$ ");
 
         term.append_dir(&curr);
-
+        
         term.handle(move |t, ev| {
             // println!("{:?}", app::event());
             // println!("{:?}", app::event_key());

@@ -15,7 +15,7 @@ use std::io::Cursor;
 
 
 
- fn serve_svg(content: String)  -> HttpResponse {
+fn serve_svg(content: String)  -> HttpResponse {
 
     //let code = QrCode::with_version(content, Version::Micro(2), EcLevel::H).unwrap();
     //let code = QrCode::with_version(content.as_bytes(), Version::Micro(2), EcLevel::L).unwrap();
@@ -25,6 +25,7 @@ use std::io::Cursor;
         .min_dimensions(200, 200)
         .dark_color(svg::Color("#000000"))
         .light_color(svg::Color("#ffffff"))
+        
         .build();
 
     
@@ -64,15 +65,7 @@ use std::io::Cursor;
 }
 
 
-#[get("/{id}/{name}/index.html")]
-async fn index2(web::Path((id, name)): web::Path<(u32, String)>) -> impl Responder {
-    format!("Hello {}! id:{}", name, id)
-}
 
-#[get("/")]
-async fn index() -> impl Responder {
-    format!("v0.11 use /qrsvc/svg/qrcode/ or /qrsvc/png/qrcode/ to use the service")
-}
 
 
 #[get("/qrsvc/{imagetype}/{content}/")]
@@ -88,6 +81,23 @@ async fn qrsvc(web::Path((imagetype, content)): web::Path<(String, String)>)  ->
 
     //format!("hello")
 }
+
+
+
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| 
+        App::new().wrap(middleware::Logger::default())
+            .service(index).service(genqrcode).service(qrsvc))
+        .bind("0.0.0.0:9090")?
+        .run()
+        .await
+}
+
+/*
+
+
 
 
 #[get("/qrcode/")]
@@ -114,19 +124,6 @@ async fn genqrcode(_req: HttpRequest)  -> HttpResponse {
     //format!("hello")
 }
 
-
-
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| 
-        App::new().wrap(middleware::Logger::default())
-            .service(index).service(genqrcode).service(qrsvc))
-        .bind("0.0.0.0:9090")?
-        .run()
-        .await
-}
-
-/*
 
 
 fn image(){
